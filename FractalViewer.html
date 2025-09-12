@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fractal Viewer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="FractalCanvasStyles.css" />
+</head>
+<body>
+  <div id="ui">
+    <label for="fractalSelect" class="sr-only">Fractal</label>
+    <select id="fractalSelect" title="Choose fractal">
+      <option value="mandelbrot" selected>Mandelbrot</option>
+      <option value="sierpinski">Sierpinski</option>
+    </select>
+    <div id="help">
+      Drag: select area to zoom
+    </div>
+  </div>
+  <canvas id="fractalCanvas"></canvas>
+  <script src="FractalRenderer.js" defer></script>
+</body>
+</html>
