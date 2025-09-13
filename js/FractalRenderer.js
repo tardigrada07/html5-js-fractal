@@ -71,36 +71,6 @@
         return { x: px, y: py };
     }
 
-    // Zoom keeping a point (cx, cy) fixed in world coords
-    function zoomAt(worldX, worldY, scale) {
-        const oldXSpan = view.xMax - view.xMin;
-        const oldYSpan = view.yMax - view.yMin;
-
-        // Position of the cursor within the view [0..1]
-        const tX = (oldXSpan > 0) ? (worldX - view.xMin) / oldXSpan : 0.5;
-        const tY = (oldYSpan > 0) ? (worldY - view.yMin) / oldYSpan : 0.5;
-
-        let newXSpan = oldXSpan * scale;
-        let newYSpan = oldYSpan * scale;
-
-        // If rounding prevents change, force a tiny step to keep zoom responsive
-        if (newXSpan === oldXSpan) newXSpan = oldXSpan * (scale < 1 ? (1 - 1e-6) : (1 + 1e-6));
-        if (newYSpan === oldYSpan) newYSpan = oldYSpan * (scale < 1 ? (1 - 1e-6) : (1 + 1e-6));
-
-        // Prevent zero/negative spans
-        const EPS = Number.EPSILON * 1e6;
-        newXSpan = Math.max(newXSpan, EPS);
-        newYSpan = Math.max(newYSpan, EPS);
-
-        // Recompute view so that worldX/worldY keep their relative location
-        view.xMin = worldX - tX * newXSpan;
-        view.xMax = view.xMin + newXSpan;
-        view.yMin = worldY - tY * newYSpan;
-        view.yMax = view.yMin + newYSpan;
-
-        scheduleRender();
-    }
-
     // Zoom to a rectangular world area
     function zoomToRect(xMin, xMax, yMin, yMax) {
         // Normalize
