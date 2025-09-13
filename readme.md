@@ -10,11 +10,39 @@ An interactive, browser-based fractal viewer built with HTML5 Canvas, vanilla Ja
 - Lightweight, minimal dependencies
 - Works offline when opened locally
 
+## Supported Fractals
+
+This viewer currently supports three fractal types:
+
+- Mandelbrot Set
+    
+    <img src="docs/Mandelbrot.png" alt="Mandelbrot" width="320" />
+
+- Sierpinski Triangle
+    
+    <img src="docs/Sierpinski.png" alt="Sierpinski" width="320" />
+
+- Koch Snowflake
+    
+    <img src="docs/Koch_snowflake.png" alt="Koch Snowflake" width="320" />
+
 ## Project Structure
 
 - FractalViewer.html — Entry point; bootstraps the canvas and UI.
-- FractalRenderer.js — Rendering logic and fractal computation.
-- FractalCanvasStyles.css — Basic styles for the viewer and canvas.
+- css/
+    - FractalCanvasStyles.css — Base styles (layout, UI, canvas, selection rectangle).
+    - Mandelbrot.css — Per-fractal style tokens.
+    - Sierpinski.css — Per-fractal style tokens.
+    - KochSnowflake.css — Per-fractal style tokens.
+- js/
+    - FractalRenderer.js — Core viewer: canvas management, view/zoom, and rendering orchestration.
+    - Mandelbrot.js — Mandelbrot fractal module.
+    - Sierpinski.js — Sierpinski triangle module.
+    - KochSnowflake.js — Koch snowflake module.
+- docs/
+    - Mandelbrot.png — Preview image.
+    - Sierpinski.png — Preview image.
+    - Koch_snowflake.png — Preview image.
 
 ## Quick Start
 
@@ -24,10 +52,10 @@ An interactive, browser-based fractal viewer built with HTML5 Canvas, vanilla Ja
 ## Usage
 
 - Launch the viewer as described above.
-- Interact with the canvas to explore the fractal (zoom/pan and other interactions depend on the current UI and implementation).
+- Use the dropdown to switch between fractals and drag-select on the canvas to zoom into a region.
 - For customization:
-    - Open `FractalRenderer.js` to adjust defaults such as iteration limits, zoom scales, and color palettes.
-    - Update `FractalCanvasStyles.css` to tweak layout and appearance.
+    - Adjust defaults (e.g., iterations, colors) in the corresponding files under `js/` for each fractal.
+    - Update styles or tokens in `css/` to tweak layout and appearance.
 
 ## Performance Tips
 
