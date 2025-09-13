@@ -1,0 +1,5 @@
+/* Sierpinski specific styles (can be extended later) */
+:root {
+    --sierpinski-base-color: #c8dcff;
+    --sierpinski-hole-color: #000000;
+}
