@@ -1,0 +1,6 @@
+/* Mandelbrot specific styles (can be extended later) */
+:root {
+    /* Example palette variables the module could use in future */
+    --mandelbrot-saturation: 0.6;
+    --mandelbrot-lightness: 0.5;
+}

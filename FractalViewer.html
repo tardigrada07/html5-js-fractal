@@ -1,23 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Fractal Viewer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="FractalCanvasStyles.css" />
+    <meta charset="UTF-8" />
+    <title>Fractal Viewer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="css/FractalCanvasStyles.css"/>
+    <link rel="stylesheet" href="css/Mandelbrot.css"/>
+    <link rel="stylesheet" href="css/Sierpinski.css"/>
+    <link rel="stylesheet" href="css/KochSnowflake.css"/>
 </head>
 <body>
-  <div id="ui">
+<div id="ui">
     <label for="fractalSelect" class="sr-only">Fractal</label>
     <select id="fractalSelect" title="Choose fractal">
-      <option value="mandelbrot" selected>Mandelbrot</option>
-      <option value="sierpinski">Sierpinski</option>
+        <option value="mandelbrot" selected>Mandelbrot</option>
+        <option value="sierpinski">Sierpinski</option>
+        <option value="koch">Koch Snowflake</option>
     </select>
     <div id="help">
-      Drag: select area to zoom
+        Drag: select area to zoom
     </div>
-  </div>
-  <canvas id="fractalCanvas"></canvas>
-  <script src="FractalRenderer.js" defer></script>
+</div>
+<div id="status" aria-live="polite" aria-atomic="true" hidden>
+    <span class="spinner" aria-hidden="true"></span>
+    <span class="label">Rendering…</span>
+</div>
+<canvas id="fractalCanvas"></canvas>
+<script src="js/Mandelbrot.js" defer></script>
+<script src="js/Sierpinski.js" defer></script>
+<script src="js/KochSnowflake.js" defer></script>
+<script src="js/FractalRenderer.js" defer></script>
 </body>
 </html>
