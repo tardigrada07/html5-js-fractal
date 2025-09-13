@@ -46,8 +46,10 @@ This viewer currently supports three fractal types:
 
 ## Quick Start
 
-1. Download or clone this repository.
-2. Open `FractalViewer.html` in a modern browser (Chrome, Firefox, Safari, Edge).
+- Run it one of the following ways:
+    - Locally: open the file `FractalViewer.html` directly in a modern browser (double‑click it or drag it into a browser window).
+    - Hosted (GitHub Pages): this repository is published via GitHub Pages, open:
+      [https://tardigrada07.github.io/html5-js-fractal/FractalViewer.html](https://tardigrada07.github.io/html5-js-fractal/FractalViewer.html)
 
 ## Usage
 
