@@ -1,9 +1,10 @@
-// Fractal Viewer - modular JS
+// Fractal Viewer - modular JS with rendering status indicator
 
 (() => {
     const canvas = document.getElementById('fractalCanvas');
     const ctx = canvas.getContext('2d', { alpha: false });
     const select = document.getElementById('fractalSelect');
+    const statusEl = document.getElementById('status');
 
     // Track device pixel ratio for crisp rendering
     const DPR = () => (window.devicePixelRatio || 1);
@@ -71,7 +72,6 @@
     }
 
     // Zoom keeping a point (cx, cy) fixed in world coords
-    // Numerically stable even at very deep zoom; avoids stalling when spans get tiny.
     function zoomAt(worldX, worldY, scale) {
         const oldXSpan = view.xMax - view.xMin;
         const oldYSpan = view.yMax - view.yMin;
@@ -143,14 +143,34 @@
         scheduleRender();
     }
 
-    // Rendering scheduler (debounce rapid calls)
+    // Rendering scheduler (debounce rapid calls) + busy indicator
     let renderPending = false;
+    let busyDepth = 0;
+    function setBusy(on) {
+        if (!statusEl) return;
+        if (on) {
+            busyDepth++;
+            statusEl.hidden = false;
+        } else {
+            busyDepth = Math.max(0, busyDepth - 1);
+            if (busyDepth === 0) {
+                // Small delay to avoid flicker on very fast renders
+                const el = statusEl;
+                setTimeout(() => { if (busyDepth === 0) el.hidden = true; }, 80);
+            }
+        }
+    }
     function scheduleRender() {
         if (renderPending) return;
         renderPending = true;
+        setBusy(true);
         requestAnimationFrame(() => {
             renderPending = false;
-            render();
+            // Allow the status to paint before heavy work
+            requestAnimationFrame(() => {
+                render();
+                setBusy(false);
+            });
         });
     }
 

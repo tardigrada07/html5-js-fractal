@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8" />
     <title>Fractal Viewer</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="css/FractalCanvasStyles.css" />
-    <link rel="stylesheet" href="css/Mandelbrot.css" />
-    <link rel="stylesheet" href="css/Sierpinski.css" />
-    <link rel="stylesheet" href="css/KochSnowflake.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="css/FractalCanvasStyles.css"/>
+    <link rel="stylesheet" href="css/Mandelbrot.css"/>
+    <link rel="stylesheet" href="css/Sierpinski.css"/>
+    <link rel="stylesheet" href="css/KochSnowflake.css"/>
 </head>
 <body>
 <div id="ui">
@@ -20,6 +20,10 @@
     <div id="help">
         Drag: select area to zoom
     </div>
+</div>
+<div id="status" aria-live="polite" aria-atomic="true" hidden>
+    <span class="spinner" aria-hidden="true"></span>
+    <span class="label">Rendering…</span>
 </div>
 <canvas id="fractalCanvas"></canvas>
 <script src="js/Mandelbrot.js" defer></script>
